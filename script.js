@@ -1,6 +1,8 @@
 let playerScore = 0;
 let computerScore = 0;
+
 const validation = ["rock", "paper", "scissors"];
+
 
 
 function computerPlay(){
@@ -16,6 +18,14 @@ function computerPlay(){
         return 'scissors';
     }
 }
+
+const button = document.querySelectorAll('.buttons');
+for(let i = 0; i < button.length; i++){
+    button[i].addEventListener('click', playRound);
+    
+}
+console.log(button);
+
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -51,22 +61,19 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-function game(){
-    for (let i = 0; i < 5; i++){
-     playerSelection = window.prompt("Type either: rock, paper, scissors");
-     if (validation.includes(playerSelection.toLowerCase())) {
-        console.log(playRound(playerSelection, computerSelection));
-        continue;
-     } else{
-         console.log("Invalid");
-         break;
-     }
 
-    }
-    //run it 5 times
-
-}
-
-//const playerSelection = "scissors";
-const computerSelection = computerPlay();
-game();
+// function game(){
+//     for (let i = 0; i < 5; i++){
+//         computerPlay(); 
+//         let computerSelection = computerPlay();
+//      playerSelection = window.prompt("Type either: rock, paper, scissors");
+     
+//      if (validation.includes(playerSelection.toLowerCase())) {
+//         console.log(playRound(playerSelection, computerSelection));
+//         continue;
+//      } else{
+//          console.log("Invalid");
+//          continue;
+//      }
+//     }
+// }
