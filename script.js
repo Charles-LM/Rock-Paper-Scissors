@@ -30,42 +30,49 @@ function playRound(playerSelection) {
     player.textContent = `Player Score: ${playerScore}`;
 
     if (playerSelection === computerSelection) {
+        winner.textContent = "Draw!";
 
         return `It's a draw! Your score: ${playerScore}, Computer score: ${computerScore}`;
     }
-    else if(playerSelection === 'rock' && computerSelection === 'scissors'){
+    else if((playerSelection === 'rock' && computerSelection === 'scissors') ||
+    (playerSelection === 'paper' && computerSelection === 'rock')||
+    (playerSelection === 'scissors' && computerSelection === 'paper')){
         playerScore++;
+        winner.textContent = "You won this round!";
+        computer.textContent = `Computer Score: ${computerScore}`;
+        player.textContent = `Player Score: ${playerScore}`;
         
-        return `You win! Rock beats Scissors! Your score: ${playerScore}, Computer score: ${computerScore}`;
-    }
-    else if(playerSelection === 'scissors' && computerSelection === 'rock'){
+        return `You win! Your score: ${playerScore}, Computer score: ${computerScore}`;
+    }else{
         computerScore++;
-
-        return `Computer wins! Rock beats Scissors! Your score: ${playerScore}, Computer score: ${computerScore}`;
+        winner.textContent = "You lost this round!";
+        computer.textContent = `Computer Score: ${computerScore}`;
+        player.textContent = `Player Score: ${playerScore}`;
+        
+        return `You lose! Your score: ${playerScore}, Computer score: ${computerScore}`;
     }
-    else if(playerSelection === 'scissors' && computerSelection === 'paper'){
-        playerScore++;
 
-        return `You win! Scissors beats Paper! Your score: ${playerScore}, Computer score: ${computerScore}`;
-    }
-    else{
-        computerScore++; 
-
-        return `Computer wins! Scissors beats Paper! Your score: ${playerScore}, Computer score: ${computerScore}`;
-    }
 }
 
 function winnerCheck(playerSelection){
+    console.log(playRound(playerSelection));
     if (playerScore === 5){
-       
-    }else if(){
+        winner.textContent = "You won the game!";
+        computer.textContent = `Computer Score: ${computerScore}`;
+        player.textContent = `Player Score: ${playerScore}`;
 
-    }
-    else{
-        console.log(playRound(playerSelection));
+       
+    }else if(computerScore === 5){
+        winner.textContent = "You lost the game!";
+        computer.textContent = `Computer Score: ${computerScore}`;
+        player.textContent = `Player Score: ${playerScore}`;
+
+
     }
 
 }
+
+
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
